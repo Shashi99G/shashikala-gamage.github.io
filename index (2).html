@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <title>Shashikala Gamage | Portfolio</title>
+  <style>
+    :root {
+      --teal: #1a9e8f;
+      --teal-dark: #157a6e;
+      --teal-light: #25c4b2;
+      --teal-glow: rgba(26,158,143,0.32);
+      --white: #ffffff;
+      --off-white: #f5f7f6;
+      --text-dark: #111827;
+      --text-mid: #374151;
+      --text-light: #6b7280;
+      --border: #e5e7eb;
+      --card-bg: #f9fafb;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;color:var(--text-dark);background:var(--white);}
+
+    /* ── HEADER ── */
+    .header{position:fixed;top:0;left:0;width:100%;background:var(--teal);display:flex;justify-content:space-between;align-items:center;padding:0 4%;height:64px;z-index:1000;box-shadow:0 2px 16px rgba(0,0,0,0.15);}
+    .logo{font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none;white-space:nowrap;}
+    .navbar{display:flex;align-items:center;gap:1.1rem;}
+    .navbar a{font-size:0.78rem;font-weight:500;color:rgba(255,255,255,0.88);text-decoration:none;position:relative;white-space:nowrap;transition:color 0.2s;}
+    .navbar a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:#fff;border-radius:2px;transition:width 0.25s;}
+    .navbar a:hover{color:#fff;}
+    .navbar a:hover::after,.navbar a.active::after{width:100%;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+    .hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;}
+
+    /* ── HOME ── */
+    .home{min-height:100vh;padding-top:64px;background:var(--white);display:flex;align-items:center;padding-left:6%;padding-right:6%;gap:5rem;}
+    .home-img-wrap{flex-shrink:0;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,var(--teal-glow) 0%,transparent 70%);display:flex;align-items:center;justify-content:center;animation:glowPulse 3s ease-in-out infinite;}
+    @keyframes glowPulse{0%,100%{box-shadow:0 0 40px 20px var(--teal-glow);}50%{box-shadow:0 0 80px 40px rgba(26,158,143,0.15);}}
+    .home-img-wrap img{width:260px;height:260px;border-radius:50%;object-fit:cover;border:5px solid var(--teal);}
+    .home-img-placeholder{width:260px;height:260px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-light));border:5px solid var(--teal);display:flex;align-items:center;justify-content:center;color:#fff;font-size:5rem;}
+    .home-content{flex:1;}
+    .home-content h3{font-size:1.05rem;font-weight:500;color:var(--text-mid);margin-bottom:0.4rem;opacity:0;animation:fadeUp 0.8s ease forwards;}
+    .home-content h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:900;color:var(--text-dark);line-height:1.05;margin-bottom:0.6rem;opacity:0;animation:fadeUp 0.8s 0.15s ease forwards;}
+    .home-content .typing-line{font-size:1.2rem;font-weight:600;color:var(--text-mid);margin-bottom:1.2rem;opacity:0;animation:fadeUp 0.8s 0.3s ease forwards;}
+    .home-content .typing-line span{color:var(--teal);}
+    .home-content p{font-size:0.93rem;line-height:1.75;color:var(--text-light);max-width:540px;margin-bottom:1.8rem;opacity:0;animation:fadeUp 0.8s 0.45s ease forwards;}
+    .home-sci{display:flex;gap:0.9rem;margin-bottom:1.8rem;opacity:0;animation:fadeUp 0.8s 0.6s ease forwards;}
+    .home-sci a{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--teal);display:flex;align-items:center;justify-content:center;color:var(--teal);font-size:1.1rem;text-decoration:none;transition:all 0.25s;}
+    .home-sci a:hover{background:var(--teal);color:#fff;transform:translateY(-2px);}
+    .btn-primary{display:inline-block;padding:13px 32px;background:var(--teal);color:#fff;border-radius:50px;font-size:0.93rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all 0.25s;opacity:0;animation:fadeUp 0.8s 0.75s ease forwards;font-family:'DM Sans',sans-serif;}
+    .btn-primary:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 8px 24px var(--teal-glow);}
+    .btn-primary.no-anim{opacity:1;animation:none;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+    /* ── SHARED ── */
+    section{padding:88px 6%;}
+    .section-title{text-align:center;font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.8vw,2.7rem);font-weight:700;color:var(--text-dark);margin-bottom:3rem;}
+    .section-title span{color:var(--teal);}
+    .section-sub{text-align:center;color:var(--text-light);margin-top:-2.2rem;margin-bottom:2.5rem;font-size:0.92rem;}
+
+    /* ── ABOUT ── */
+    #about{background:var(--off-white);}
+    .about-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:center;max-width:1100px;margin:0 auto;}
+    .about-img{border-radius:16px;overflow:hidden;border:3px solid var(--teal);}
+    .about-img img{width:100%;display:block;}
+    .about-img-placeholder{width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--teal-dark),var(--teal-light));display:flex;align-items:center;justify-content:center;color:#fff;font-size:4rem;}
+    .about-text h4{font-size:1.05rem;color:var(--teal);font-weight:700;margin-bottom:0.8rem;}
+    .about-text p{font-size:0.93rem;line-height:1.85;color:var(--text-mid);margin-bottom:1.2rem;}
+    .about-contacts{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;}
+    .about-contacts span{font-size:0.88rem;color:var(--text-mid);display:flex;align-items:center;gap:0.5rem;}
+    .about-contacts span i{color:var(--teal);font-size:1rem;}
+
+    /* ── SERVICES ── */
+    #services{background:var(--white);}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;}
+    .service-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all 0.3s;}
+    .service-card:hover{border-color:var(--teal);transform:translateY(-6px);box-shadow:0 12px 32px var(--teal-glow);}
+    .service-card i{font-size:2.4rem;color:var(--teal);margin-bottom:1rem;display:block;}
+    .service-card h3{font-size:1.05rem;font-weight:700;margin-bottom:0.6rem;}
+    .service-card p{font-size:0.87rem;line-height:1.7;color:var(--text-light);}
+
+    /* ── EXPERIENCE ── */
+    #experience{background:var(--off-white);}
+    .exp-inner{max-width:900px;margin:0 auto;}
+    .exp-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.5rem;position:relative;overflow:hidden;transition:all 0.3s;}
+    .exp-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(to bottom,var(--teal),var(--teal-light));border-radius:5px 0 0 5px;}
+    .exp-card:hover{box-shadow:0 8px 28px var(--teal-glow);transform:translateY(-3px);}
+    .exp-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.5rem;flex-wrap:wrap;}
+    .exp-title{font-size:1.05rem;font-weight:700;color:var(--text-dark);}
+    .exp-company{font-size:0.88rem;color:var(--teal);font-weight:600;margin-bottom:0.2rem;}
+    .exp-date{font-size:0.78rem;background:var(--teal);color:#fff;padding:3px 12px;border-radius:50px;font-weight:600;white-space:nowrap;align-self:flex-start;margin-top:2px;}
+    .exp-card ul{padding-left:1.2rem;margin-top:0.8rem;}
+    .exp-card ul li{font-size:0.88rem;line-height:1.8;color:var(--text-mid);margin-bottom:0.2rem;}
+
+    /* ── SKILLS ── */
+    #skills{background:var(--white);}
+    .skills-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1100px;margin:0 auto;}
+    .skills-block h3{font-size:1rem;font-weight:700;text-decoration:underline;text-underline-offset:6px;text-decoration-color:var(--teal);margin-bottom:1.5rem;color:var(--text-dark);}
+    .tech-bar{margin-bottom:1.1rem;}
+    .tech-bar .label{display:flex;justify-content:space-between;font-size:0.86rem;font-weight:600;color:var(--text-mid);margin-bottom:0.35rem;}
+    .progress-track{height:8px;background:var(--border);border-radius:100px;overflow:hidden;}
+    .progress-fill{height:100%;background:linear-gradient(90deg,var(--teal-dark),var(--teal-light));border-radius:100px;}
+    .tag-cloud{display:flex;flex-wrap:wrap;gap:0.5rem;}
+    .tag{background:var(--teal);color:#fff;font-size:0.76rem;font-weight:600;padding:5px 13px;border-radius:50px;}
+    .tag.outline{background:transparent;border:1.5px solid var(--teal);color:var(--teal);}
+    .skills-cat{margin-bottom:1.8rem;}
+    .skills-cat h4{font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-light);margin-bottom:0.7rem;}
+
+    /* ── PROJECTS ── */
+    #portfolio{background:var(--off-white);}
+    .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;}
+    .project-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:all 0.3s;}
+    .project-card:hover{border-color:var(--teal);transform:translateY(-5px);box-shadow:0 10px 28px var(--teal-glow);}
+    .project-tag{display:inline-block;background:rgba(26,158,143,0.12);color:var(--teal);font-size:0.72rem;font-weight:700;padding:3px 11px;border-radius:50px;margin-bottom:0.9rem;text-transform:uppercase;letter-spacing:0.05em;}
+    .project-card h4{font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.3rem;}
+    .project-card .project-org{font-size:0.82rem;color:var(--text-light);margin-bottom:0.8rem;}
+    .project-card p{font-size:0.87rem;line-height:1.7;color:var(--text-mid);margin-bottom:1rem;}
+    .project-card ul{padding-left:1.1rem;margin-bottom:1rem;}
+    .project-card ul li{font-size:0.86rem;line-height:1.75;color:var(--text-mid);}
+    .tech-used{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.8rem;}
+    .tech-pill{background:var(--card-bg);border:1px solid var(--border);color:var(--text-mid);font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:50px;}
+
+    /* ── INTRODUCTION (PPW) ── */
+    #introduction{background:var(--white);}
+    .intro-inner{max-width:900px;margin:0 auto;}
+    .intro-card{background:var(--card-bg);border:1px solid var(--border);border-left:5px solid var(--teal);border-radius:16px;padding:2.2rem;margin-bottom:1.4rem;}
+    .intro-card h3{font-size:1.05rem;font-weight:700;color:var(--teal);margin-bottom:0.9rem;display:flex;align-items:center;gap:0.6rem;}
+    .intro-card p{font-size:0.92rem;line-height:1.9;color:var(--text-mid);}
+    .intro-card ul{padding-left:1.2rem;}
+    .intro-card ul li{font-size:0.92rem;line-height:1.9;color:var(--text-mid);margin-bottom:0.3rem;}
+
+    /* ── CAREER PLAN (PPW) ── */
+    #career{background:var(--off-white);}
+    .career-inner{max-width:900px;margin:0 auto;}
+    .career-timeline{position:relative;padding-left:2rem;}
+    .career-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--teal),var(--teal-light));border-radius:3px;}
+    .timeline-item{position:relative;margin-bottom:2.4rem;padding-left:2rem;}
+    .timeline-item::before{content:'';position:absolute;left:-2.45rem;top:6px;width:14px;height:14px;border-radius:50%;background:var(--teal);border:3px solid var(--white);box-shadow:0 0 0 2px var(--teal);}
+    .timeline-item .year{font-size:0.75rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.25rem;}
+    .timeline-item h4{font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.4rem;}
+    .timeline-item p{font-size:0.89rem;line-height:1.75;color:var(--text-mid);}
+    .timeline-item ul{padding-left:1.2rem;margin-top:0.4rem;}
+    .timeline-item ul li{font-size:0.89rem;line-height:1.8;color:var(--text-mid);}
+
+    /* ── CV (PPW) ── */
+    #cv{background:var(--white);}
+    .cv-inner{max-width:900px;margin:0 auto;}
+    .cv-header{display:flex;align-items:center;gap:2rem;background:var(--teal);color:#fff;border-radius:16px;padding:2rem 2.5rem;margin-bottom:2rem;}
+    .cv-avatar{width:75px;height:75px;border-radius:50%;background:rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;font-size:2.3rem;flex-shrink:0;}
+    .cv-header-info h3{font-size:1.4rem;font-weight:700;}
+    .cv-header-info .cv-role{font-size:0.88rem;opacity:0.85;margin-top:0.2rem;}
+    .cv-contact-row{display:flex;flex-wrap:wrap;gap:0.7rem;margin-top:0.8rem;}
+    .cv-contact-row span{font-size:0.78rem;opacity:0.9;display:flex;align-items:center;gap:0.3rem;}
+    .cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
+    .cv-section{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.5rem;}
+    .cv-section.full{grid-column:1/-1;}
+    .cv-section h4{font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--teal);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--teal);}
+    .cv-entry{margin-bottom:1rem;}
+    .cv-entry:last-child{margin-bottom:0;}
+    .cv-entry .cv-title{font-size:0.9rem;font-weight:700;color:var(--text-dark);}
+    .cv-entry .cv-sub{font-size:0.8rem;color:var(--teal);font-weight:600;margin-bottom:0.2rem;}
+    .cv-entry .cv-date{font-size:0.76rem;color:var(--text-light);margin-bottom:0.3rem;}
+    .cv-entry p{font-size:0.84rem;color:var(--text-mid);line-height:1.6;}
+    .cv-entry ul{padding-left:1rem;}
+    .cv-entry ul li{font-size:0.84rem;color:var(--text-mid);line-height:1.75;}
+    .skill-tags{display:flex;flex-wrap:wrap;gap:0.45rem;}
+    .skill-tag{background:var(--teal);color:#fff;font-size:0.75rem;font-weight:600;padding:4px 12px;border-radius:50px;}
+
+    /* ── CERTIFICATES (PPW) ── */
+    #certificate{background:var(--off-white);}
+    .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;max-width:1100px;margin:0 auto;}
+    .cert-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.8rem;text-align:center;transition:all 0.3s;}
+    .cert-card:hover{border-color:var(--teal);transform:translateY(-5px);box-shadow:0 10px 28px var(--teal-glow);}
+    .cert-icon{width:66px;height:66px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-light));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;}
+    .cert-icon i{font-size:1.8rem;color:#fff;}
+    .cert-card h4{font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.35rem;}
+    .cert-issuer{font-size:0.82rem;color:var(--teal);font-weight:600;margin-bottom:0.25rem;}
+    .cert-date{font-size:0.78rem;color:var(--text-light);margin-bottom:0.8rem;}
+    .cert-badge{display:inline-block;background:var(--off-white);border:1.5px solid var(--teal);color:var(--teal);font-size:0.72rem;font-weight:700;padding:3px 13px;border-radius:50px;}
+
+    /* ── CONTACT ── */
+    #contact{background:var(--white);}
+    .contact-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;max-width:1100px;margin:0 auto;align-items:start;}
+    .contact-info h4{font-size:1.05rem;font-weight:700;color:var(--teal);margin-bottom:0.5rem;}
+    .contact-info p{font-size:0.9rem;color:var(--text-light);line-height:1.7;margin-bottom:1.4rem;}
+    .contact-list{list-style:none;margin-bottom:1.4rem;}
+    .contact-list li{display:flex;align-items:center;gap:0.7rem;font-size:0.88rem;color:var(--text-mid);margin-bottom:0.75rem;}
+    .contact-list li i{color:var(--teal);font-size:1.1rem;}
+    .contact-icons{display:flex;gap:0.8rem;}
+    .contact-icons a{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--teal);display:flex;align-items:center;justify-content:center;color:var(--teal);font-size:1.1rem;text-decoration:none;transition:all 0.25s;}
+    .contact-icons a:hover{background:var(--teal);color:#fff;}
+    .contact-form{display:flex;flex-direction:column;gap:0.8rem;}
+    .contact-form input,.contact-form textarea{width:100%;padding:13px 18px;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--text-dark);background:#fff;outline:none;transition:border-color 0.2s;}
+    .contact-form input:focus,.contact-form textarea:focus{border-color:var(--teal);}
+    .contact-form textarea{height:150px;resize:none;}
+
+    /* ── FOOTER / TOP ── */
+    footer{background:var(--teal);color:rgba(255,255,255,0.85);text-align:center;padding:1.2rem;font-size:0.83rem;}
+    .top{position:fixed;bottom:2rem;right:2rem;background:var(--teal);color:#fff;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;text-decoration:none;box-shadow:0 4px 16px var(--teal-glow);transition:transform 0.2s;}
+    .top:hover{transform:translateY(-3px);}
+
+    .project-links {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.project-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 7px 18px;
+  background: var(--teal);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.project-link-btn:hover {
+  background: var(--teal-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--teal-glow);
+}
+
+.project-link-btn i {
+  font-size: 1rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card ul {
+  flex-grow: 1;
+}
+
+.project-links {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+}
+
+    .cv-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      .home{flex-direction:column;text-align:center;padding-top:100px;gap:2.5rem;}
+      .home-sci{justify-content:center;}
+      .home-img-wrap{width:230px;height:230px;}
+      .home-img-wrap img,.home-img-placeholder{width:195px;height:195px;}
+      .about-inner,.skills-inner,.contact-inner,.cv-grid{grid-template-columns:1fr;}
+      .cv-section.full{grid-column:auto;}
+      .cv-header{flex-direction:column;text-align:center;}
+      .exp-header{flex-direction:column;}
+    }
+    @media(max-width:640px){
+      .navbar{display:none;flex-direction:column;position:fixed;top:64px;left:0;width:100%;background:var(--teal-dark);padding:1rem 1.5rem;gap:1rem;z-index:999;}
+      .navbar.open{display:flex;}
+      .hamburger{display:flex;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="header">
+  <a href="#home" class="logo">Shashikala Gamage</a>
+  <nav class="navbar" id="navbar">
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#portfolio">Projects</a>
+    <a href="#introduction">Intro</a>
+    <a href="#career">Career</a>
+    <a href="#cv">CV</a>
+    <a href="#certificate">Certs</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ── HOME ── -->
+<section class="home" id="home">
+  <div class="home-img-wrap">
+    <img src="img/shashi_p.png" alt="Shashikala Gamage">
+  </div>
+  <div class="home-content">
+    <h3>Hello, I'm</h3>
+    <h1>Shashikala Gamage</h1>
+    <p class="typing-line">I'm a <span class="text"></span></p>
+    <p>Motivated IT undergraduate with hands-on experience in full-stack web development and software quality assurance. Passionate about building responsive, reliable, and user-friendly applications.</p>
+    <div class="home-sci">
+      <a href="https://www.linkedin.com/in/shashikala-gamage" target="_blank"><i class='bx bxl-linkedin'></i></a>
+      <a href="https://github.com/Shashi99G" target="_blank"><i class='bx bxl-github'></i></a>
+      <a href="mailto:spbgamage99@gmail.com"><i class='bx bx-envelope'></i></a>
+      <a href="tel:0712128000"><i class='bx bx-phone'></i></a>
+    </div>
+    <a href="#cv" class="btn-primary">View My CV</a>
+  </div>
+</section>
+
+<!<!-- ── ABOUT ── -->
+<section id="about">
+  <h2 class="section-title">About <span>Me</span></h2>
+  <div class="about-inner">
+    <div class="about-img">
+      <img src="img/cover.png" alt="Shashikala Gamage">
+    </div>
+    <div class="about-text">
+      <h4>Software Engineer &amp; IT Undergraduate</h4>
+      <p>I am a detail-oriented Information Technology undergraduate at SLIIT with hands-on experience in full-stack web development and software quality assurance. I specialise in building responsive web applications and have worked with React.js, Angular, Node.js, and MySQL/MongoDB in real-world internship environments.</p>
+      <p>I'm also experienced in software testing — both manual and automated — using tools like Playwright, Selenium, Cypress, and TestNG. I thrive in Agile teams and am always eager to learn and apply emerging technologies.</p>
+      <div class="about-contacts">
+        <span><i class='bx bx-map'></i> Malabe, Colombo, Sri Lanka</span>
+        <span><i class='bx bx-phone'></i> 0712128000 &nbsp;|&nbsp; 0743617686</span>
+        <span><i class='bx bx-envelope'></i> spbgamage99@gmail.com</span>
+        <span><i class='bx bxl-linkedin'></i> linkedin.com/in/shashikala-gamage</span>
+        <span><i class='bx bxl-github'></i> github.com/Shashi99G</span>
+      </div>
+      <a href="#contact" class="btn-primary no-anim">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <h2 class="section-title">What I <span>Do</span></h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <i class='bx bx-code-alt'></i>
+      <h3>Full-Stack Development</h3>
+      <p>Building end-to-end web applications using React.js, Angular, Next.js, Node.js, and REST APIs, with MySQL and MongoDB database integration.</p>
+    </div>
+    <div class="service-card">
+      <i class='bx bx-test-tube'></i>
+      <h3>Software Quality Assurance</h3>
+      <p>Manual and automated testing using Playwright, Selenium, Cypress, and TestNG. API validation with Postman, defect documentation, and test reporting.</p>
+    </div>
+    <div class="service-card">
+      <i class='bx bx-mobile-alt'></i>
+      <h3>Mobile App Development</h3>
+      <p>Developing cross-platform mobile applications using Flutter with Firebase integration, focused on clean UI and smooth user experiences.</p>
+    </div>
+    <div class="service-card">
+      <i class='bx bx-brain'></i>
+      <h3>AI &amp; Machine Learning</h3>
+      <p>Applying deep learning and computer vision techniques using TensorFlow, OpenCV, and EfficientNet for intelligent image analysis and classification.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <h2 class="section-title">Work <span>Experience</span></h2>
+  <div class="exp-inner">
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Software Engineer Intern</div>
+          <div class="exp-company">Cybernetic (Pvt) Ltd</div>
+        </div>
+        <span class="exp-date">Feb 2025 – Sep 2025</span>
+      </div>
+      <ul>
+        <li>Contributed to the development of a Customer Relationship Management (CRM) system used in real client environments.</li>
+        <li>Developed and optimised frontend modules using React.js and Angular, including customer management, proposals, payments, and event tracking features.</li>
+        <li>Integrated frontend components with backend APIs and database operations using Node.js and Prisma ORM with MySQL.</li>
+        <li>Conducted API testing using Postman to validate backend services and ensure data integrity.</li>
+        <li>Performed debugging and issue fixing across frontend and backend modules.</li>
+        <li>Collaborated with developers and designers in an Agile development environment using GitHub for version control.</li>
+        <li>Assisted with UI testing, validation, and documentation for a Water Resource Management platform.</li>
+        <li>Participated in requirement discussions and contributed to feature planning and improvements.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <h2 class="section-title">My <span>Skills</span></h2>
+  <div class="skills-inner">
+    <div class="skills-block">
+      <h3>Technical Proficiency</h3>
+      <div class="tech-bar"><div class="label"><span>React.js / Angular / Next.js</span><span>85%</span></div><div class="progress-track"><div class="progress-fill" style="width:85%"></div></div></div>
+      <div class="tech-bar"><div class="label"><span>Node.js / Express.js / REST APIs</span><span>80%</span></div><div class="progress-track"><div class="progress-fill" style="width:80%"></div></div></div>
+      <div class="tech-bar"><div class="label"><span>JavaScript / HTML / CSS</span><span>88%</span></div><div class="progress-track"><div class="progress-fill" style="width:88%"></div></div></div>
+      <div class="tech-bar"><div class="label"><span>Python / TensorFlow / OpenCV</span><span>75%</span></div><div class="progress-track"><div class="progress-fill" style="width:75%"></div></div></div>
+      <div class="tech-bar"><div class="label"><span>MySQL / MongoDB / PostgreSQL</span><span>78%</span></div><div class="progress-track"><div class="progress-fill" style="width:78%"></div></div></div>
+      <div class="tech-bar"><div class="label"><span>Playwright / Selenium / Cypress</span><span>82%</span></div><div class="progress-track"><div class="progress-fill" style="width:82%"></div></div></div>
+    </div>
+
+    <div class="skills-block">
+      <h3>Tools &amp; Technologies</h3>
+      <div class="skills-cat">
+        <h4>Frontend</h4>
+        <div class="tag-cloud">
+          <span class="tag">React.js</span><span class="tag">Angular</span><span class="tag">Next.js</span><span class="tag">Tailwind CSS</span><span class="tag">HTML5</span><span class="tag">CSS3</span>
+        </div>
+      </div>
+      <div class="skills-cat">
+        <h4>Backend &amp; Databases</h4>
+        <div class="tag-cloud">
+          <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">Prisma ORM</span><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">PostgreSQL</span><span class="tag">Firebase</span>
+        </div>
+      </div>
+      <div class="skills-cat">
+        <h4>Testing &amp; QA</h4>
+        <div class="tag-cloud">
+          <span class="tag">Playwright</span><span class="tag">Selenium</span><span class="tag">Cypress</span><span class="tag">TestNG</span><span class="tag">Postman</span><span class="tag">Swagger</span>
+        </div>
+      </div>
+      <div class="skills-cat">
+        <h4>Other Tools</h4>
+        <div class="tag-cloud">
+          <span class="tag">Git &amp; GitHub</span><span class="tag">Flutter</span><span class="tag">Android Studio</span><span class="tag">VS Code</span><span class="tag">JIRA</span><span class="tag">AWS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="portfolio">
+  <h2 class="section-title">Key <span>Projects</span></h2>
+  <div class="project-grid">
+
+    <div class="project-card">
+      <span class="project-tag">Final Year Research</span>
+      <h4>AI-Powered Gemstone Identification &amp; Gem Cutting Robot Arm</h4>
+      <div class="project-org">SLIIT &nbsp;|&nbsp; 2026</div>
+      <ul>
+        <li>Developing an intelligent gemstone identification system using Deep Learning and Computer Vision.</li>
+        <li>Building a Flutter-based mobile application for gemstone scanning and classification.</li>
+        <li>Integrated AI analysis to improve gemstone identification accuracy.</li>
+        <li>Worked with image processing using OpenCV and TensorFlow (EfficientNetB3).</li>
+        <li>Designed database structures and application workflows.</li>
+      </ul>
+      <div class="tech-used">
+        <span class="tech-pill">Flutter</span><span class="tech-pill">Python</span><span class="tech-pill">TensorFlow</span><span class="tech-pill">OpenCV</span><span class="tech-pill">Firebase</span><span class="tech-pill">MySQL</span><span class="tech-pill">EfficientNetB3</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Shashi99G/YOUR-REPO-NAME" target="_blank" class="project-link-btn">
+          <i class='bx bxl-github'></i> View on GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Internship Project</span>
+      <h4>CRM System &amp; Water Resource Management Platform</h4>
+      <div class="project-org">Cybernetic (Pvt) Ltd &nbsp;|&nbsp; 2026</div>
+      <ul>
+        <li>Developed frontend modules for customer management, proposals, payments, and event tracking.</li>
+        <li>Built responsive user interfaces using Angular Material and React.js.</li>
+        <li>Integrated backend APIs using Node.js and Prisma ORM with MySQL.</li>
+        <li>Conducted testing and debugging to improve system reliability.</li>
+        <li>Participated in Agile meetings and collaborated closely with team members.</li>
+      </ul>
+      <div class="tech-used">
+        <span class="tech-pill">React.js</span><span class="tech-pill">Angular</span><span class="tech-pill">Node.js</span><span class="tech-pill">Prisma ORM</span><span class="tech-pill">MySQL</span><span class="tech-pill">GitHub</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Shashi99G/YOUR-REPO-NAME" target="_blank" class="project-link-btn">
+          <i class='bx bxl-github'></i> View on GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">SQA Module</span>
+      <h4>Software Quality Assurance Project</h4>
+      <div class="project-org">SLIIT &nbsp;|&nbsp; 2026</div>
+      <ul>
+        <li>Performed manual and automated testing on a real-world web application (pixelssuite.com).</li>
+        <li>Designed detailed test cases covering functional, UI, and edge case scenarios.</li>
+        <li>Developed automation scripts using Playwright, Selenium, Cypress, and TestNG.</li>
+        <li>Documented defects with severity and priority levels; captured screenshots for reporting.</li>
+        <li>Compared automation tools and analysed testing efficiency across frameworks.</li>
+      </ul>
+      <div class="tech-used">
+        <span class="tech-pill">Playwright</span><span class="tech-pill">Selenium</span><span class="tech-pill">Cypress</span><span class="tech-pill">TestNG</span><span class="tech-pill">Postman</span><span class="tech-pill">Swagger</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Shashi99G/YOUR-REPO-NAME" target="_blank" class="project-link-btn">
+          <i class='bx bxl-github'></i> View on GitHub
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ══════════════════════════════════════
+     PPW PORTFOLIO — IT4070 SECTIONS
+══════════════════════════════════════ -->
+
+<!-- 1. INTRODUCTION -->
+<section id="introduction">
+  <h2 class="section-title">My <span>Introduction</span></h2>
+  <div class="intro-inner">
+    <div class="intro-card">
+      <h3><i class='bx bxs-user-circle'></i> Who Am I?</h3>
+      <p>I am Shashikala Gamage, a motivated and detail-oriented Information Technology undergraduate currently in my 4th year at the Sri Lanka Institute of Information Technology (SLIIT). My passion lies at the intersection of software engineering and quality assurance — I enjoy both building applications and ensuring they work flawlessly for end users. I bring a strong foundation in full-stack development combined with practical experience from a real-world software engineering internship.</p>
+    </div>
+    <div class="intro-card">
+      <h3><i class='bx bxs-bullseye'></i> My Core Competencies</h3>
+      <ul>
+        <li><strong>Full-Stack Development</strong> — Building responsive web applications with React.js, Angular, Node.js, and REST APIs.</li>
+        <li><strong>Software Quality Assurance</strong> — Designing test plans and executing manual and automated tests using Playwright, Selenium, Cypress, and TestNG.</li>
+        <li><strong>Mobile Development</strong> — Developing Flutter-based mobile applications with Firebase integration.</li>
+        <li><strong>AI &amp; Machine Learning</strong> — Applying TensorFlow and OpenCV for image classification and deep learning research.</li>
+        <li><strong>Cloud &amp; DevOps</strong> — Familiar with AWS services, GitHub for version control, and Agile team workflows.</li>
+      </ul>
+    </div>
+    <div class="intro-card">
+      <h3><i class='bx bxs-graduation'></i> Education &amp; Background</h3>
+      <p>Currently pursuing a BSc (Hons) in Information Technology at SLIIT (2022 – Present), with a GPA of 2.8. I hold a GCE Advanced Level qualification in the Bio Science stream from Mahanama National College (2020) and have additionally completed a Diploma in English Language from the International College of Universal Language (2025). My academic journey has equipped me with both theoretical knowledge and practical project experience across software engineering, databases, and advanced computing.</p>
+    </div>
+    <div class="intro-card">
+      <h3><i class='bx bxs-heart'></i> Professional Values &amp; Goals</h3>
+      <p>I believe in writing clean, maintainable code and delivering software that genuinely solves user problems. I am a collaborative team player who adapts quickly to new technologies and environments. Having worked in a professional Agile team during my internship at Cybernetic (Pvt) Ltd, I understand the importance of communication, accountability, and continuous improvement. My goal is to grow into a well-rounded Software Engineer who contributes both to development and quality — ensuring products are built right and work right.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. CAREER DEVELOPMENT PLAN -->
+<section id="career">
+  <h2 class="section-title">Career <span>Development Plan</span></h2>
+  <div class="career-inner">
+    <div class="career-timeline">
+
+      <div class="timeline-item">
+        <div class="year">2025 — Immediate (Now)</div>
+        <h4>Complete Internship &amp; Graduate</h4>
+        <p>Successfully complete the Software Engineer Internship at Cybernetic (Pvt) Ltd (ending Sep 2025) and finalise the BSc (Hons) in Information Technology at SLIIT.</p>
+        <ul>
+          <li>Deliver high-quality contributions to the CRM system and Water Resource Management platform</li>
+          <li>Complete the Final Year Research Project on AI-powered gemstone identification</li>
+          <li>Build a strong professional portfolio and online presence (LinkedIn, GitHub)</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2025 – 2026 — Short Term (0–1 Year)</div>
+        <h4>Secure an Associate / Junior Software Engineer Role</h4>
+        <p>Transition from intern to a full-time Associate Software Engineer or Junior Software Engineer position at a reputable technology company in Sri Lanka or remotely.</p>
+        <ul>
+          <li>Deepen React.js and Node.js expertise through personal and open-source projects</li>
+          <li>Pursue AWS certification (Solutions Architect – Associate level)</li>
+          <li>Strengthen test automation skills with a focus on CI/CD pipeline integration</li>
+          <li>Actively contribute to open-source projects on GitHub</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2026 – 2028 — Medium Term (1–3 Years)</div>
+        <h4>Grow into a Mid-Level Full-Stack Engineer</h4>
+        <p>Develop deeper expertise across the stack — from React/Angular frontends to Node.js backends, cloud deployment, and DevOps practices.</p>
+        <ul>
+          <li>Master containerisation (Docker, Kubernetes) and cloud-native architectures</li>
+          <li>Lead feature development for at least one product from design to production</li>
+          <li>Explore specialisation in AI/ML engineering or DevOps based on career momentum</li>
+          <li>Mentor junior developers and participate in code review processes</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2028 – 2031 — Long Term (3–6 Years)</div>
+        <h4>Senior Engineer / Tech Lead</h4>
+        <p>Aspire to a senior technical or leadership role, driving architecture decisions and guiding product quality strategy within a growing organisation.</p>
+        <ul>
+          <li>Lead cross-functional engineering teams in Agile environments</li>
+          <li>Pursue a Master's degree in Computer Science or Software Engineering (part-time)</li>
+          <li>Explore entrepreneurial opportunities or a specialised consulting path</li>
+          <li>Speak at local tech meetups and contribute to the Sri Lankan developer community</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">Ongoing — Lifelong Learning</div>
+        <h4>Continuous Professional Development</h4>
+        <ul>
+          <li>Stay current with emerging frameworks, cloud services, and industry trends</li>
+          <li>Pursue regular certifications to validate growing skill sets</li>
+          <li>Build and maintain a strong professional network through LinkedIn and tech events</li>
+          <li>Balance technical depth with leadership and communication skills</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 3. CURRICULUM VITAE -->
+<section id="cv">
+  <h2 class="section-title">Curriculum <span>Vitae</span></h2>
+  <div class="cv-inner">
+
+    <div class="cv-header">
+      <div class="cv-avatar">
+        <img src="img/shashi_p.png" alt="Shashikala Gamage">
+        </div>
+      <div class="cv-header-info">
+        <h3>Shashikala Gamage</h3>
+        <div class="cv-role">Software Engineer &nbsp;|&nbsp; IT Undergraduate &nbsp;|&nbsp; Full-Stack Developer &amp; QA Engineer</div>
+        <div class="cv-contact-row">
+          <span><i class='bx bx-map'></i> Malabe, Colombo</span>
+          <span><i class='bx bx-phone'></i> 0712128000 / 0743617686</span>
+          <span><i class='bx bx-envelope'></i> spbgamage99@gmail.com</span>
+          <span><i class='bx bxl-linkedin'></i> linkedin.com/in/shashikala-gamage</span>
+          <span><i class='bx bxl-github'></i> github.com/Shashi99G</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-grid">
+
+      <div class="cv-section full">
+        <h4>Objective</h4>
+        <div class="cv-entry">
+          <p>Motivated and detail-oriented Information Technology undergraduate with hands-on experience in full-stack web development and software quality assurance. Skilled in developing responsive web applications using React.js, Angular, Node.js, and MySQL/MongoDB. Experienced in software testing, API validation, and automation tools including Selenium, Cypress, Playwright, and TestNG. Seeking a Software Engineer or Associate Software Engineer position to contribute technical skills while growing as a software professional.</p>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <h4>Education</h4>
+        <div class="cv-entry">
+          <div class="cv-title">BSc (Hons) in Information Technology</div>
+          <div class="cv-sub">Sri Lanka Institute of Information Technology (SLIIT)</div>
+          <div class="cv-date">2022 – Present &nbsp;|&nbsp; 4th Year &nbsp;|&nbsp; GPA: 2.8</div>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-title">GCE Advanced Level — Bio Stream</div>
+          <div class="cv-sub">Mo/ Mahanama National College</div>
+          <div class="cv-date">2020</div>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-title">Diploma in English Language</div>
+          <div class="cv-sub">International College of Universal Language</div>
+          <div class="cv-date">2025</div>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <h4>Experience</h4>
+        <div class="cv-entry">
+          <div class="cv-title">Software Engineer Intern</div>
+          <div class="cv-sub">Cybernetic (Pvt) Ltd</div>
+          <div class="cv-date">Feb 2025 – Sep 2025</div>
+          <ul>
+            <li>Developed frontend modules using React.js and Angular for a CRM system.</li>
+            <li>Integrated frontend with backend APIs using Node.js and Prisma ORM.</li>
+            <li>Conducted API testing with Postman; performed debugging and issue fixing.</li>
+            <li>Collaborated in an Agile team using GitHub for version control.</li>
+            <li>Assisted with UI testing and documentation for a Water Resource Management platform.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-section full">
+        <h4>Technical Skills</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">React.js</span>
+          <span class="skill-tag">Angular</span>
+          <span class="skill-tag">Next.js</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Express.js</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">PHP</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">HTML &amp; CSS</span>
+          <span class="skill-tag">Tailwind CSS</span>
+          <span class="skill-tag">Flutter</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">Firebase</span>
+          <span class="skill-tag">Playwright</span>
+          <span class="skill-tag">Selenium</span>
+          <span class="skill-tag">Cypress</span>
+          <span class="skill-tag">TestNG</span>
+          <span class="skill-tag">Postman</span>
+          <span class="skill-tag">Git &amp; GitHub</span>
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">JIRA</span>
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">OpenCV</span>
+          <span class="skill-tag">Prisma ORM</span>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <h4>Key Projects</h4>
+        <div class="cv-entry">
+          <div class="cv-title">AI Gemstone Identification &amp; Robot Arm</div>
+          <div class="cv-date">SLIIT Final Year Project | 2026</div>
+          <p>Deep learning + computer vision system for gemstone classification using Flutter, TensorFlow, and OpenCV.</p>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-title">CRM &amp; Water Resource Management</div>
+          <div class="cv-date">Cybernetic (Pvt) Ltd | 2026</div>
+          <p>Full-stack CRM system with React.js, Angular, Node.js, Prisma ORM, and MySQL.</p>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-title">SQA Automation Project</div>
+          <div class="cv-date">SLIIT | 2026</div>
+          <p>Automated test suite for pixelssuite.com using Playwright, Selenium, Cypress, and TestNG.</p>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <h4>Soft Skills</h4>
+        <div class="cv-entry">
+          <ul>
+            <li>Strong attention to detail</li>
+            <li>Problem-solving mindset</li>
+            <li>Team collaboration &amp; communication</li>
+            <li>Time management</li>
+            <li>Fast learner &amp; adaptability</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 4. CERTIFICATES -->
+<section id="certificate">
+  <h2 class="section-title">Certificates &amp; <span>Courses</span></h2>
+  <p class="section-sub">Technical &amp; soft skill certifications completed through online and physical courses</p>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-icon"><i class='bx bx-test-tube'></i></div>
+      <h4>Software Quality Assurance</h4>
+      <div class="cert-issuer">Udemy</div>
+      <div class="cert-date">2024</div>
+      <span class="cert-badge">QA / Testing</span>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon"><i class='bx bxl-aws'></i></div>
+      <h4>Cloud Web Application Builder</h4>
+      <div class="cert-issuer">Amazon Web Services (AWS)</div>
+      <div class="cert-date">2025</div>
+      <span class="cert-badge">Cloud / AWS</span>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon"><i class='bx bxl-python'></i></div>
+      <h4>Python for Beginners</h4>
+      <div class="cert-issuer">University of Moratuwa</div>
+      <div class="cert-date">2024</div>
+      <span class="cert-badge">Python</span>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon"><i class='bx bx-palette'></i></div>
+      <h4>Web Design for Beginners</h4>
+      <div class="cert-issuer">University of Moratuwa</div>
+      <div class="cert-date">2024</div>
+      <span class="cert-badge">Web Design</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <h2 class="section-title">Contact <span>Me</span></h2>
+  <div class="contact-inner">
+    <div class="contact-info">
+      <h4>Let's Work Together</h4>
+      <p>I'm open to Software Engineer, Associate Software Engineer, and QA Engineer opportunities. Feel free to reach out — I'd love to connect!</p>
+      <ul class="contact-list">
+        <li><i class='bx bxs-envelope'></i> spbgamage99@gmail.com</li>
+        <li><i class='bx bxs-phone'></i> 0712128000 &nbsp;/&nbsp; 0743617686</li>
+        <li><i class='bx bx-map'></i> Malabe, Colombo, Sri Lanka</li>
+      </ul>
+      <div class="contact-icons">
+        <a href="https://www.linkedin.com/in/shashikala-gamage" target="_blank"><i class='bx bxl-linkedin'></i></a>
+        <a href="https://github.com/Shashi99G" target="_blank"><i class='bx bxl-github'></i></a>
+        <a href="mailto:spbgamage99@gmail.com"><i class='bx bx-envelope'></i></a>
+      </div>
+    </div>
+    <form class="contact-form" action="">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <input type="text" placeholder="Subject">
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn-primary no-anim">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>Developed by Shashikala Gamage © 2025 &nbsp;|&nbsp; Portfolio</p>
+</footer>
+
+<a href="#home" class="top"><i class='bx bx-up-arrow-alt'></i></a>
+
+<script>
+  var typed = new Typed(".text", {
+    strings: ["Software Engineer", "Full-Stack Developer", "QA Engineer", "IT Undergraduate"],
+    typeSpeed: 80, backSpeed: 55, backDelay: 1600, loop: true
+  });
+
+  const allSections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.navbar a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    allSections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+  });
+
+  function toggleMenu() {
+    document.getElementById('navbar').classList.toggle('open');
+  }
+</script>
+</body>
+</html>
